@@ -36,7 +36,7 @@ INSERT INTO T_Books (BookId, Title, Author, ThemeId, UnitaryPrice) VALUES ( 1, '
 INSERT INTO T_Books (BookId, Title, Author, ThemeId, UnitaryPrice) VALUES ( 2, 'Tchoupi picole' , 'Nanard et Raymond' , 2 , 12.25);
 INSERT INTO T_Books (BookId, Title, Author, ThemeId, UnitaryPrice) VALUES ( 3, 'Pecresse sous les ponts' ,'Emmanuel Macro' , 4 , 20.22);
 INSERT INTO T_Books (BookId, Title, Author, ThemeId, UnitaryPrice) VALUES ( 4, 'Accident Pat patrouille' ,	'La SPA' , 2, 9.5);
-INSERT INTO T_Books (BookId, Title, Author, ThemeId, UnitaryPrice) VALUES ( 5, 'Le chateau cramé' ,	'' , 3 , 28.9);
+INSERT INTO T_Books (BookId, Title, Author, ThemeId, UnitaryPrice) VALUES ( 5, 'Le vampire de Paris' ,	'Eric Zémort' , 3 , 28.9);
 INSERT INTO T_Books (BookId, Title, Author, ThemeId, UnitaryPrice) VALUES ( 6, 'Le seigneur des crados' , 'MDR Tolkien' , 1 ,  25.99);
 INSERT INTO T_Books (BookId, Title, Author, ThemeId, UnitaryPrice) VALUES ( 7, 'Hanouna tait toi' ,'Arthutur' , 4 , 15.5);
 INSERT INTO T_Books (BookId, Title, Author, ThemeId, UnitaryPrice) VALUES ( 8, 'Charlie & les Islamistes' ,	'Albert Camé' , 3 , 20.15 );

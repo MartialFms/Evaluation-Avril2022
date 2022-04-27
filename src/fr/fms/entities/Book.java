@@ -4,16 +4,25 @@ public class Book {
 	private int bookId;
 	private String title;
 	private String author;
-	private String thematic;
-	private String unitaryPrice;
+	private int thematic;
+	private double unitaryPrice;
 
-	public Book(int bookId, String title, String author, String thematic, String unitaryPrice) {
+	public Book(int bookId, String title, String author, int thematic, double unitaryPrice) {
 		this.bookId = bookId;
 		this.title = title;
 		this.author = author;
 		this.thematic = thematic;
 		this.unitaryPrice = unitaryPrice;
-
+	}
+	
+	public Book(String title, String author, int thematic, double unitaryPrice) {
+		this.title = title;
+		this.author = author;
+		this.thematic = thematic;
+		this.unitaryPrice = unitaryPrice;
+	}
+	
+	public Book() {
 	}
 
 	public int getBookId() {
@@ -40,19 +49,19 @@ public class Book {
 		this.author = author;
 	}
 
-	public String getThematic() {
+	public int getThematic() {
 		return thematic;
 	}
 
-	public void setThematic(String thematic) {
+	public void setThematic(int thematic) {
 		this.thematic = thematic;
 	}
 
-	public String getUnitaryPrice() {
+	public double getUnitaryPrice() {
 		return unitaryPrice;
 	}
 
-	public void setUnitaryPrice(String unitaryPrice) {
+	public void setUnitaryPrice(double unitaryPrice) {
 		this.unitaryPrice = unitaryPrice;
 	}
 

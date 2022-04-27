@@ -8,7 +8,7 @@ public class Customer extends User {
 	private String phone;
 	private String adress;
 
-	public Customer(int userId, String password, String firstName, String lastName, String email, String phone,
+	public Customer(String userId, String password, String firstName, String lastName, String email, String phone,
 			String adress) {
 		super(userId, password);
 		this.firstName = firstName;

@@ -20,4 +20,5 @@ public class ConfigCreationService {
 			System.out.println("Error in config.properties creation");
 		}
 	}
+	// other logins -> mars / mderand
 }
