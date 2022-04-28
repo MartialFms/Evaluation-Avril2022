@@ -5,7 +5,7 @@ import java.util.Scanner;
 import fr.fms.dao.BookDao;
 import fr.fms.entities.Book;
 
-public class TestDao {
+public class TestBookDao {
 
 	public static Scanner scan = new Scanner(System.in);
 
@@ -22,13 +22,16 @@ public class TestDao {
 			readBook();
 			break;
 		case 3:
-
+			updateBook();
 			break;
 		case 4:
-
+			deleteBook();
 			break;
 		case 5:
-
+			readAllBook();
+			break;
+		case 6:
+			readAllBookByTheme();
 			break;
 
 		}
@@ -56,7 +59,7 @@ public class TestDao {
 		BookDao creationDao = new BookDao();
 		creationDao.create(book);
 	}
-	
+
 	public static void readBook() {
 		// Questions
 		System.out.println("Test READ");
@@ -64,9 +67,10 @@ public class TestDao {
 		int targetId = scan.nextInt();
 
 		BookDao consultDao = new BookDao();
-		consultDao.read(targetId);
+		Book targetBook = consultDao.read(targetId);
+		System.out.println(targetBook);
 	}
-	
+
 	public static void updateBook() {
 		// Questions
 		System.out.println("Test UPDATE");
@@ -74,16 +78,38 @@ public class TestDao {
 		int targetId = scan.nextInt();
 
 		BookDao deleteDao = new BookDao();
-		deleteDao.read(targetId);
+		Book targetBook = deleteDao.read(targetId);
+
+		System.out.println("Id : ");
+		double newPrice = scan.nextInt();
+
+		targetBook.setUnitaryPrice(newPrice);
+		deleteDao.update(targetBook);
 	}
-	
+
 	public static void deleteBook() {
 		// Questions
 		System.out.println("Test DELETE");
 		System.out.println("Id : ");
 		int targetId = scan.nextInt();
 
-		BookDao creationDao = new BookDao();
-		creationDao.read(targetId);
+		BookDao deleteDao = new BookDao();
+		Book targetBook = deleteDao.read(targetId);
+		deleteDao.delete(targetBook);
 	}
+
+	public static void readAllBook() {
+		// Questions
+		System.out.println("Test READ ALL");
+		BookDao allConsultDao = new BookDao();
+		allConsultDao.readAll();
+	}
+
+	public static void readAllBookByTheme() {
+		// Questions
+		System.out.println("Test READ ALL");
+		BookDao themeConsultDao = new BookDao();
+		themeConsultDao.readAll();
+	}
+
 }

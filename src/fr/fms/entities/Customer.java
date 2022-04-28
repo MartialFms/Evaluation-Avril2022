@@ -8,9 +8,19 @@ public class Customer extends User {
 	private String phone;
 	private String adress;
 
-	public Customer(String userId, String password, String firstName, String lastName, String email, String phone,
+	public Customer(int userId, String password, String firstName, String lastName, String email, String phone,
 			String adress) {
 		super(userId, password);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.phone = phone;
+		this.adress = adress;
+	}
+	
+	public Customer(int userId, String firstName, String lastName, String email, String phone,
+			String adress) {
+		super(userId);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

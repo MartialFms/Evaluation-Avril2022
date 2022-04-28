@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Order {
 	private int orderId;
+	private double orderAmount;
 	private Date date;
 	private String customerName;
 	private String customerId;
@@ -22,6 +23,14 @@ public class Order {
 
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
+	}
+
+	public double getOrderAmount() {
+		return orderAmount;
+	}
+
+	public void setOrderAmount(double orderAmount) {
+		this.orderAmount = orderAmount;
 	}
 
 	public Date getDate() {
@@ -50,9 +59,8 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", date=" + date + ", customerName=" + customerName + ", customerId="
-				+ customerId + "]";
+		return "Order [orderId=" + orderId + ", orderAmount=" + orderAmount + ", date=" + date + ", customerName="
+				+ customerName + ", customerId=" + customerId + "]";
 	}
 
-	
 }

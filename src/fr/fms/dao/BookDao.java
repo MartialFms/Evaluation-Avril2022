@@ -39,13 +39,14 @@ public class BookDao implements Dao<Book> {
 			PreparedStatement prepStat = connection.prepareStatement(query);
 			prepStat.setInt(1, id);
 			ResultSet result = prepStat.executeQuery();
-			if (result.next())
-				System.out.println(new Book(result.getInt(1), result.getString(2), result.getString(3),
-						result.getInt(4), result.getDouble(5)));
+			if (result.next()) return new Book(result.getInt(1), result.getString(2), result.getString(3),
+					result.getInt(4), result.getDouble(5));
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
 		return null;
+		
 	}
 
 	@Override
@@ -70,11 +71,11 @@ public class BookDao implements Dao<Book> {
 
 	@Override
 	public boolean delete(Book book) {
-		String query = "DELETE FROM T_Articles where IdArticle= ? ";
+		String query = "DELETE FROM T_Books where BookId= ? ";
 		try {
 			PreparedStatement prepStat = connection.prepareStatement(query);
 			prepStat.setInt(1, book.getBookId());
-			if (prepStat.executeUpdate() == 1)
+			 if (prepStat.executeUpdate() == 1)
 				System.out.println("Succefull deleted !");
 			return true;
 		} catch (SQLException e) {
@@ -87,7 +88,7 @@ public class BookDao implements Dao<Book> {
 	@Override
 	public ArrayList<Book> readAll() {
 		ArrayList<Book> books = new ArrayList<Book>();
-		String query = "SELECT * FROM T_Articles";
+		String query = "SELECT * FROM T_Books";
 		try {
 			PreparedStatement prepStat = connection.prepareStatement(query);
 			ResultSet result = prepStat.executeQuery();
@@ -107,7 +108,7 @@ public class BookDao implements Dao<Book> {
 
 	public ArrayList<Book> readAllByTheme(int themeId) {
 		ArrayList<Book> books = new ArrayList<Book>();
-		String query = "SELECT * FROM T_Articles where ThemeId = ?";
+		String query = "SELECT * FROM T_Books where ThemeId = ?";
 		try {
 			PreparedStatement prepStat = connection.prepareStatement(query);
 			prepStat.setInt(1, themeId);

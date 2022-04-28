@@ -65,3 +65,30 @@ INSERT INTO T_Custo (IdCusto, FirstName, LastName, Email, Phone, Adress) VALUES 
 
 SELECT * FROM T_Custo;
 
+
+-- -----------------------------------------------------------------------------
+-- - Construction de la table des commandes cklient                          ---
+-- -----------------------------------------------------------------------------
+
+CREATE TABLE T_Orders (
+	OrderId			int(4)	PRIMARY KEY AUTO_INCREMENT,
+	Amount			float(4)	NOT NULL DEFAULT 0,
+	OrderDate 		DATE		NOT NULL DEFAULT NOW(),
+	IdCusto   		INT(4)   	NOT NULL,
+	FOREIGN KEY(IdCusto) REFERENCES T_Custo(IdCusto)
+) ENGINE = InnoDB;
+
+SELECT * FROM T_Orders;
+
+CREATE TABLE T_Order_Details (
+	OrderItemIt			int(4)	PRIMARY KEY AUTO_INCREMENT,
+	BookId         		INT(4)   NOT NULL,
+	FOREIGN KEY(BookId) REFERENCES T_Books(BookId),
+	Quantity				FLOAT(4) NOT NULL DEFAULT 1,
+	UnitaryPrice		FLOAT(4)	NOT NULL DEFAULT 0,
+	OrderId           INT(4)   NOT NULL,
+	FOREIGN KEY(OrderId) REFERENCES T_Orders(OrderId)
+) ENGINE = InnoDB;
+
+SELECT * FROM T_Order_Details;
+

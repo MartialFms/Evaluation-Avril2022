@@ -18,6 +18,13 @@ public class OrderDetail {
 		this.unitaryPrice = unitaryPrice;
 		this.totalPrice = totalPrice;
 	}
+	
+	public OrderDetail(int orderId, String productId, int quantity, double unitaryPrice) {
+		this.orderId = orderId;
+		this.productId = productId;
+		this.quantity = quantity;
+		this.unitaryPrice = unitaryPrice;
+	}
 
 	public int getOrderId() {
 		return orderId;

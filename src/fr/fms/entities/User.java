@@ -1,19 +1,23 @@
 package fr.fms.entities;
 
 public class User {
-	private String userId;
+	private int userId;
 	private String password;
 
-	public User(String userId, String password) {
+	public User(int userId, String password) {
 		this.userId = userId;
 		this.password = password;
 	}
+	
+	public User(int userId) {
+		this.userId = userId;
+	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
