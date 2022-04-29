@@ -1,5 +1,6 @@
 package fr.fms.entities;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Order {
@@ -7,14 +8,28 @@ public class Order {
 	private double orderAmount;
 	private Date date;
 	private String customerName;
-	private String customerId;
+	private int customerId;
+	double[] total;
 
-	public Order(int orderId, Date date, String customerName, String customerId) {
+	public Order(int orderId, Date date, String customerName, int customerId, double[] total) {
 		this.orderId = orderId;
 		this.date = date;
 		this.customerName = customerName;
 		this.customerId = customerId;
 
+	}
+
+	public Order(int orderId, Date date, int customerId, double[] total) {
+		this.orderId = orderId;
+		this.date = date;
+		this.customerId = customerId;
+		this.total = total;
+	}
+
+	public Order(Date date, int customerId, double[] total) {
+		this.date = date;
+		this.customerId = customerId;
+		this.total = total;
 	}
 
 	public int getOrderId() {
@@ -49,18 +64,26 @@ public class Order {
 		this.customerName = customerName;
 	}
 
-	public String getCustomerId() {
+	public int getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(String customerId) {
+	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
+	}
+
+	public double[] getTotal() {
+		return total;
+	}
+
+	public void setTotal(double[] total) {
+		this.total = total;
 	}
 
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", orderAmount=" + orderAmount + ", date=" + date + ", customerName="
-				+ customerName + ", customerId=" + customerId + "]";
+				+ customerName + ", customerId=" + customerId + ", total=" + Arrays.toString(total) + "]";
 	}
 
 }

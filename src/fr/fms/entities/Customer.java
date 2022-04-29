@@ -17,15 +17,17 @@ public class Customer extends User {
 		this.phone = phone;
 		this.adress = adress;
 	}
-	
-	public Customer(int userId, String firstName, String lastName, String email, String phone,
-			String adress) {
+
+	public Customer(int userId, String firstName, String lastName, String email, String phone, String adress) {
 		super(userId);
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
 		this.adress = adress;
+	}
+
+	public Customer() {
 	}
 
 	public String getFirstName() {

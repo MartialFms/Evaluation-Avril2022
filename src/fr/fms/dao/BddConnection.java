@@ -38,7 +38,7 @@ public class BddConnection {
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! A revoir !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	public static synchronized Connection getConnection() {
 		if(connection == null) 	new BddConnection();
-		else System.out.println("Connexion existe déjà ! " + connection.toString());
+		// else System.out.println("Connexion existe déjà ! " + connection.toString());
 		return connection;
 	}
 	

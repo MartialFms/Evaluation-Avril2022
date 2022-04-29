@@ -70,5 +70,10 @@ public class Book {
 		return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", thematic=" + thematic
 				+ ", unitaryPrice=" + unitaryPrice + "]";
 	}
+	
+	public String describe() {
+		return bookId + "\t" + title + "\t( " + author + " ) \t[Theme : " + thematic
+				+ " ] \t | Prix" + unitaryPrice + "€";
+	}
 
 }

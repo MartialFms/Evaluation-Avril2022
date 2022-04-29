@@ -21,7 +21,7 @@ public class OrderDao implements Dao<Order> {
 			PreparedStatement prepStat = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			{
 				prepStat.setDouble(1, order.getOrderAmount());
-				prepStat.setString(2, order.getCustomerId());
+				prepStat.setInt(2, order.getCustomerId());
 				if (prepStat.executeUpdate() == 1)
 					System.out.println("New Order created");
 				return true;

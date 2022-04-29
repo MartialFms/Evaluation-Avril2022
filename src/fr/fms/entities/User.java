@@ -12,6 +12,9 @@ public class User {
 	public User(int userId) {
 		this.userId = userId;
 	}
+	
+	public User() {
+	}
 
 	public int getUserId() {
 		return userId;

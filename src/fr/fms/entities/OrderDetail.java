@@ -3,35 +3,38 @@ package fr.fms.entities;
 import java.util.Date;
 
 public class OrderDetail {
-	private int orderId;
+	private int orderDetailId;
 	private String productId;
 	private String productName;
 	private int quantity;
 	private double unitaryPrice;
 	private double totalPrice;
+	private int orderId;
 
-	public OrderDetail(int orderId, String productId, String productName, int quantity, double unitaryPrice, double totalPrice) {
-		this.orderId = orderId;
+	public OrderDetail(int orderDetailId, String productId, String productName, int quantity, double unitaryPrice, double totalPrice,int orderId) {
+		this.orderDetailId = orderId;
 		this.productId = productId;
 		this.productName = productName;
 		this.quantity = quantity;
 		this.unitaryPrice = unitaryPrice;
 		this.totalPrice = totalPrice;
+		this.orderId = orderId;
 	}
 	
-	public OrderDetail(int orderId, String productId, int quantity, double unitaryPrice) {
-		this.orderId = orderId;
+	public OrderDetail(int orderDetailId, String productId, int quantity, double unitaryPrice,int orderId) {
+		this.orderDetailId = orderId;
 		this.productId = productId;
 		this.quantity = quantity;
 		this.unitaryPrice = unitaryPrice;
-	}
-
-	public int getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(int orderId) {
 		this.orderId = orderId;
+	}
+
+	public int getOrderDetailId() {
+		return orderDetailId;
+	}
+
+	public void setOrderDetailId(int orderId) {
+		this.orderDetailId = orderDetailId;
 	}
 
 	public String getProductId() {
@@ -72,6 +75,14 @@ public class OrderDetail {
 
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+	
+	public int getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
 	@Override

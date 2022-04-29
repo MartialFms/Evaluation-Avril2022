@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import fr.fms.entities.Book;
 import fr.fms.entities.Customer;
+import fr.fms.entities.OrderDetail;
 
 
 public interface Buisness {	
@@ -23,11 +24,11 @@ public interface Buisness {
 	
 	public ArrayList<Book> showBooksByTheme(Book book);
 
-	public boolean addToCart(Book book);		
+	public boolean addToCart(Book book, int quantity);		
 
-	public boolean rmFromCart(Book book);		
+	public boolean deleteFromCart(Book book, int quantity);		
 
-	public ArrayList<Book> getCart();	
+	public ArrayList<OrderDetail> getCart();	
 	
 	public int order(int idUser);		
 	

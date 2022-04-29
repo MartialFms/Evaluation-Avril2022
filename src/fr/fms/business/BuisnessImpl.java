@@ -8,61 +8,124 @@ import java.util.HashMap;
 import fr.fms.dao.BookDao;
 import fr.fms.dao.Dao;
 import fr.fms.dao.DaoFactory;
+import fr.fms.dao.OrderDetailsDao;
 import fr.fms.entities.Book;
 import fr.fms.entities.Customer;
 import fr.fms.entities.Order;
 import fr.fms.entities.OrderDetail;
+
 import fr.fms.entities.User;
 
 public class BuisnessImpl implements Buisness {
-	private HashMap<Integer, Book> cart;
+	private HashMap<Integer, OrderDetail> cart;
 	private ArrayList<Book> books = new ArrayList<Book>();
 
 	private Dao<Book> bookDao = DaoFactory.getBookDao();
 	private Dao<Customer> userDao = DaoFactory.getUserDao();
+	private Dao<Order> orderDao = DaoFactory.getOrderDao();
+	private Dao<OrderDetail> orderDetailsDao = DaoFactory.getOrderDetailsDao();
 	private OrderDetail orderBook;
 
 	public BuisnessImpl() {
-		this.cart = new HashMap<Integer, Book>();
+		this.cart = new HashMap<Integer, OrderDetail>();
 	}
 
-	public ArrayList<Book> showBooks(Book book) {
+	public ArrayList<Book> showBooks() {
 		return bookDao.readAll();
 	}
 
+	public HashMap<Integer, String> showThemes() {
+		return ((BookDao) bookDao).showThemes();
+	}
+
 	public ArrayList<Book> showBooksByTheme(Book book) {
-		BookDao bookdao;
-		return bookdao.readAllByTheme(book.getThematic());
+		return ((BookDao) bookDao).readAllByTheme(book.getThematic()); // add cast
 	}
 
-// class OrdreDetails ??
-	public boolean addToCart(Book book, int quantity) {
-		Book orderBook = cart.get(book.getBookId()); // ------------------------------
-		if (orderBook != null) {
-			orderBook.setQuantity(orderBook.getQuantity() + quantity);
-		} else
-			cart.put(book.getBookId(), book);
-		return bookDao.update(orderBook);
+	public void clearCart() {
+		cart.clear();
 	}
 
-	// class OrdreDetails ??    >> OrderDetail test;
-	public boolean removeFromCart(Book book, int orderQuantity) {
+	public boolean isCartEmpty() {
+		return cart.isEmpty();
+	}
+
+	public boolean addToCart(Book book, int orderQuantity) {
+		OrderDetail orderBookDetail = cart.get(book.getBookId()); // ------------------------------
+		if (orderBookDetail != null) {
+			orderBookDetail.setQuantity(orderBook.getQuantity() + orderQuantity);
+		} else {
+			cart.put(orderBook.getOrderId(), orderBookDetail);
+		}
+		return orderDetailsDao.update(orderBook);
+	}
+
+	@Override
+	public boolean deleteFromCart(Book book, int orderQuantity) {
 		orderBook.setOrderId(book.getBookId());
-		
-		
-		 
-		Book orderBook = cart.get(OrderDetail.getBookId()); // -------------------
+		OrderDetail orderBook = cart.get(book.getBookId()); // -------------------
 		int bookQuantity = orderBook.getQuantity();
 		if (orderBook != null && orderQuantity <= bookQuantity)
 			orderBook.setQuantity(bookQuantity - orderQuantity);
-		return bookDao.update(book);
+		return orderDetailsDao.update(orderBook);
 	}
 
-
-	public ArrayList<Book> getCart() {
+	public ArrayList<OrderDetail> getCart() {
+		return new ArrayList<OrderDetail>(cart.values());
 	}
 
-	public int order(int idUser) {
+	public int order(int userId) {
+//		if (userDao.read(userId) != null) {
+//			double[] total = { 0 };
+//			cart.values().forEach((a) -> total[0] += a.getUnitaryPrice() * a.getQuantity());
+//			Order order = new Order(new Date(), userId, total);
+//			if (orderDao.create(order)) {
+//// tester book
+//
+//				// unarityprice ou totalprice
+//				for (OrderDetail orderDetail : cart.values()) {
+//					orderDao.create(new OrderDetail(0, orderDetail.getProductId(), orderDetail.getQuantity(),
+//							orderDetail.getUnitaryPrice(), orderDetail.getOrderId()));
+//				}
+//				return order.getOrderId();
+//			}
+//		}
+		return 0;
+	}
+
+	public Book readBookFromId(int id) {
+		return bookDao.read(id);
+	}
+
+	public int checkLogin(String email, String password) {
+		for (Customer user : userDao.readAll())
+			if (user.getEmail().equalsIgnoreCase(email) && user.getPassword().equals(password))
+				return user.getUserId();
+		return 0;
+	}
+
+	@Override
+	public ArrayList<Customer> showCustomers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void addCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public double getTotal() {
+		double[] total = { 0 };
+		cart.values().forEach((a) -> total[0] += a.getUnitaryPrice() * a.getQuantity());
+		return total[0];
+	}
+
+	@Override
+	public ArrayList<Book> showBooks(Book book) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -8,7 +8,7 @@ public interface Dao<T> {
 	public Connection connection = BddConnection.getConnection();
 	public static final Logger logger = Logger.getLogger("SqlExceptions");
 
-	public boolean create(T obj);// public boolean create(T obj);
+	public boolean create(T obj);
 	public T read(int id);
 	public boolean update(T obj);
 	public boolean delete(T obj);

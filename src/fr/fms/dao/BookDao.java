@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import fr.fms.entities.Book;
 
@@ -128,6 +129,25 @@ public class BookDao implements Dao<Book> {
 		//return sortedBooks;
 		return books;
 	}
+	
+	public HashMap<Integer,String> showThemes() {
+		HashMap<Integer,String> themeList = new HashMap<Integer,String>();
+		String query = "SELECT * FROM T_Thematic";
+		try {
+			PreparedStatement prepStat = connection.prepareStatement(query);
+			ResultSet result = prepStat.executeQuery();
+			while (result.next()) {
+				int resultThemeId = result.getInt(1);
+				String resultName = result.getString(2);
+				themeList.put(resultThemeId, resultName);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return themeList;
+	}
+	
+	
 
 
 }
